@@ -27,10 +27,15 @@ Route::middleware('sessionHasAdmin')->prefix('admin')->group(function () {
 	Route::post('praktikumAdd',['as'=>'admin.praktikumAdd', 'uses'=>'praktikumController@tambah']);
 	Route::get('userReset/{id}',['as'=>'admin.userReset', 'uses'=>'praktikumController@resetUser']);
 	Route::get('delete/{id}',['as'=>'admin.delete', 'uses'=>'praktikumController@delete']);
+	Route::get('la/{id}',['as'=>'admin.la', 'uses'=>'praktikumController@indexLa']);
+	Route::post('uploadla',['as'=>'admin.uploadla', 'uses'=>'praktikumController@uploadLa']);
+	Route::get('deletela/{id}',['as'=>'admin.deletela', 'uses'=>'praktikumController@deleteLa']);
+	Route::get('download/{id}',['as'=>'admin.download', 'uses'=>'praktikumController@downloadLa']);
 	//list nilai
 	Route::get('listnilai',['as'=>'admin.listnilai', 'uses'=>'listnilaiController@index']);
 	Route::get('nilai/{id}',['as'=>'admin.nilai', 'uses'=>'listnilaiController@nilai']);
 });
+
 
 Route::get('asisten',function(){
 	return redirect(route('asisten.loginpage'));
@@ -40,6 +45,8 @@ Route::post('asisten/loginCheck',['as'=>'asisten.login','uses' =>'loginAsistenCo
 Route::get('asisten/logout',['as'=>'asisten.logout','uses' =>'loginAsistenController@logout']);
 Route::middleware('sessionHasAsisten')->prefix('asisten')->group(function () {
 	Route::get('dashboard',['as'=>'asisten.dashboard', 'uses'=>'dashboardController@indexAsisten']);
+	Route::get('la',['as'=>'asisten.la', 'uses'=>'praktikumController@asistenLa']);
+	Route::get('download/{id}',['as'=>'asisten.download', 'uses'=>'praktikumController@downloadLa']);
 	//list nilai
 	Route::get('listnilai',['as'=>'asisten.listnilai', 'uses'=>'nilaiController@index']);
 	Route::get('nilai/{id}',['as'=>'asisten.nilai', 'uses'=>'nilaiController@nilai']);

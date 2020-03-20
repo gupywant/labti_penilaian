@@ -48,7 +48,7 @@ User Manage
             </select>
           </div>
           <div class="form-group">
-            <label>Praktium </label><br>
+            <label>Praktikum </label><br>
             <input style="width: 100%;" placeholder="nama praktikum" type="text" name="nama_praktikum" id="praktikum" class="form-control form-control-navbar" required="">
           </div>
           <div class="form-group">
@@ -128,6 +128,7 @@ User Manage
                     <th>No</th>
                     <th>Kelas</th>
                     <th>Praktikum</th>
+                    <th>LA Prak.</th>
                     <th>Detail</th>
                     <th>Delete</th>
                   </tr>
@@ -137,6 +138,7 @@ User Manage
                     <th>No</th>
                     <th>Kelas</th>
                     <th>Praktikum</th>
+                    <th>LA Prak.</th>
                     <th>Detail</th>
                     <th>Delete</th>
                   </tr>
@@ -148,6 +150,7 @@ User Manage
                     <td>{{$no++}}</td>
                     <td>{{$data->kelas}}</td>
                     <td>{{$data->nama_praktikum}}</td>
+                    <td><a href="{{route('admin.la',$data->id_praktikum)}}" class="btn btn-danger btn-sm"><i class="fa fa-upload"> Upload</i></td>
                     <td><input type="submit" value="Detail" class="btn btn-info btn-sm" data-toggle="modal" data-target="#modal{{$data->id_praktikum}}"></td>
                     <td><a href="{{route('admin.delete',$data->id_praktikum)}}" class="btn btn-danger btn-sm">Delete</td>
                   </tr>

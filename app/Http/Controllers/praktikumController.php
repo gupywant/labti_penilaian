@@ -5,10 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\model\Mhs18Model;
 use App\model\PraktikumModel;
+use App\model\PraktikumlaModel;
 use App\model\UserModel;
 use App\model\UseraksesModel;
 use App\model\NilaiModel;
 use Session;
+use File;
 use Illuminate\Support\Facades\Hash;
 
 class praktikumController extends Controller
@@ -31,6 +33,13 @@ class praktikumController extends Controller
     	$praktikum->kelas = $request->kelas;
     	$praktikum->pertemuan = $request->pertemuan;
     	$praktikum->save();
+
+        for($i=1;$i<=$request->pertemuan;$i++){
+            $la = new PraktikumlaModel;
+            $la->id_praktikum = $praktikum->id_praktikum;
+            $la->pertemuan = $i;
+            $la->save();
+        }
 
     	$usernameNew = $request->kelas.$request->nama_praktikum.$praktikum->id_praktikum;
     	$passwordNew = "nilai123";
@@ -89,5 +98,56 @@ class praktikumController extends Controller
     	$praktikum = PraktikumModel::where('id_praktikum',$id)->delete();
     	$nilai = NilaiModel::where('id_praktikum',$id)->delete();
     	return back()->with('alert','Praktikum telah di delete');
+    }
+
+    /////file LA
+    public function indexLa($id){
+        $data['p'] = PraktikumModel::where('id_praktikum',$id)->first();
+        $data['file'] = PraktikumlaModel::where('id_praktikum',$id)->get();
+
+        return view('admin.la',$data);
+    }
+    public function uploadLa(Request $request){
+        $path = public_path().'/files/'.$request->id_praktikum;
+        if (!file_exists($path)) {
+            File::makeDirectory($path, $mode = 0777, true, true);
+        }
+        $file = $request->file('file');
+        $file->move($path,$file->getClientOriginalName());
+
+        $data = array(
+            "file" => $file->getClientOriginalName()
+        );
+
+        PraktikumlaModel::where('id_la',$request->id_la)->update($data);
+
+        return back()->with('alert','File berhasil diunggah');
+    }
+    public function deleteLa($id){
+        $model = PraktikumlaModel::where('id_la',$id);
+        $file = $model->first();
+        $path = public_path().'/files/'.$file->id_praktikum.'/'.$file->file;
+        unlink($path);
+
+        $data = array(
+            "file" => '#'
+        );
+
+        $model->update($data);
+
+        return back()->with('alert','file berhasil dihapus');
+    }
+    public function asistenLa(){
+        $user = UserModel::where('username',Session::get('username'))->first();
+        $akses = UseraksesModel::where('id_user',$user->id_user)->first();
+        $data['p'] = PraktikumModel::where('id_akses',$akses->id_akses)->first();
+        $data['file'] = PraktikumlaModel::where('id_praktikum',$data['p']->id_praktikum)->get();
+
+        return view('asisten.la',$data);
+    }
+    public function downloadLa($id){
+        $model = PraktikumlaModel::where('id_la',$id);
+        $file = $model->first();
+        return response()->download(public_path().'/files/'.$file->id_praktikum.'/'.$file->file);
     }
 }

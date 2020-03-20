@@ -83,6 +83,14 @@
                 </p>
               </a>
             </li>
+            <li class="nav-item">
+              <a href="{{route('asisten.la')}}" class="nav-link">
+                <i class="nav-icon fas fa-file-archive"></i>
+                <p>
+                  Download LA
+                </p>
+              </a>
+            </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
