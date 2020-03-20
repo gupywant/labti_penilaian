@@ -52,6 +52,7 @@ class Kernel extends HttpKernel
      */
     protected $routeMiddleware = [
         'sessionHasAdmin' => \App\Http\Middleware\SessionHasAdmin::class,
+        'sessionHasAsisten' => \App\Http\Middleware\SessionHasAsisten::class,
         'auth' => \App\Http\Middleware\Authenticate::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'bindings' => \Illuminate\Routing\Middleware\SubstituteBindings::class,
