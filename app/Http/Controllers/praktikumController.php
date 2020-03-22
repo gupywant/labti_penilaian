@@ -108,12 +108,16 @@ class praktikumController extends Controller
         return view('admin.la',$data);
     }
     public function uploadLa(Request $request){
+        if(empty($request->file)){
+            return back()->with('alert','pilih file terlebih dahulu');
+        }
         $path = public_path().'/files/'.$request->id_praktikum;
         if (!file_exists($path)) {
             File::makeDirectory($path, $mode = 0777, true, true);
         }
         $file = $request->file('file');
         $file->move($path,$file->getClientOriginalName());
+
 
         $data = array(
             "file" => $file->getClientOriginalName()
