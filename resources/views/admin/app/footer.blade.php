@@ -46,6 +46,26 @@
 		} );
 	</script>
 @endif
+@if(!empty($urut))
+	<script type="text/javascript">
+		$(document).ready( function () {
+		    $('#nilai').DataTable({
+		    	dom: 'Bfrtip',
+		        buttons: [
+		            {
+					    extend: 'excelHtml5',
+					    title: "List Nilai yang telah diurut",
+					    text: 'Excel',
+					    exportOptions: {
+					        stripNewlines: true
+					    }
+					}
+		        ],
+		        order: [],
+		    });
+		} );
+	</script>
+@endif
 
 </body>
 </html>

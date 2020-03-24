@@ -91,6 +91,14 @@
                 </p>
               </a>
             </li>
+            <li class="nav-item">
+              <a href="{{route('admin.nilaiurut')}}" class="nav-link">
+                <i class="nav-icon fa fa-file"></i>
+                <p>
+                  Urut Nilai + Convert
+                </p>
+              </a>
+            </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

@@ -34,6 +34,10 @@ Route::middleware('sessionHasAdmin')->prefix('admin')->group(function () {
 	//list nilai
 	Route::get('listnilai',['as'=>'admin.listnilai', 'uses'=>'listnilaiController@index']);
 	Route::get('nilai/{id}',['as'=>'admin.nilai', 'uses'=>'listnilaiController@nilai']);
+	//urut nilai
+	Route::get('nilaiurut',['as'=>'admin.nilaiurut', 'uses'=>'ImportController@index']);
+	Route::post('uruttp',['as'=>'admin.uruttp', 'uses'=>'ImportController@tp']);
+	Route::post('urutlp',['as'=>'admin.urutlp', 'uses'=>'ImportController@lp']);
 });
 
 
