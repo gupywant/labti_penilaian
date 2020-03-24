@@ -40,7 +40,7 @@ User Manage
       <div class="modal-body">
         <form action="{{route('admin.uruttp')}}" method="post" enctype="multipart/form-data">
           {{ csrf_field() }}
-          <label>Upload TP</label>
+          <label>Upload Pre test - TP</label>
           <div class="file-field">
             <div class="btn btn-primary btn-sm float-left">
               <span>Choose file</span>
@@ -52,7 +52,7 @@ User Manage
         </form>
         <form action="{{route('admin.urutlp')}}" method="post" enctype="multipart/form-data">
           {{ csrf_field() }}
-          <label>Upload LP</label>
+          <label>Upload Post test - LP</label>
           <div class="file-field">
             <div class="btn btn-primary btn-sm float-left">
               <span>Choose file</span>
