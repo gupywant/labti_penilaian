@@ -21,7 +21,7 @@ class NilaiurutImport implements ToModel
     public function model(array $row)
     {
         if($this->tipe=="tp"){
-            $nilai = (int)$row[9]*3.5;
+            $nilai = (int)$row[9]*3;
         }else{
             $nilai = (int)$row[9]*2;
         }
