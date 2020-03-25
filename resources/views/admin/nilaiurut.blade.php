@@ -82,7 +82,6 @@ User Manage
               </div>-->
               <button value="Tambah Praktikum" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal">Import Excel</button>
               <div class="float-sm-right">
-                <h5>Nilai Asli</h5>
               </div>
             </div>
             <!-- /.card-header -->
