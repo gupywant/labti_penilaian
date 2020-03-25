@@ -55,7 +55,7 @@
 		            {
 					    extend: 'excelHtml5',
 					    title: "List Nilai yang telah diurut",
-					    text: 'Excel',
+					    text: 'Download Excel',
 					    exportOptions: {
 					        stripNewlines: true
 					    }
