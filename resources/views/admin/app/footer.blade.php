@@ -54,7 +54,21 @@
 		        buttons: [
 		            {
 					    extend: 'excelHtml5',
-					    title: "List Nilai yang telah diurut",
+					    title: "List Nilai Convert",
+					    text: 'Download Excel',
+					    exportOptions: {
+					        stripNewlines: true
+					    }
+					}
+		        ],
+		        order: [],
+		    });
+		    $('#nilaiasli').DataTable({
+		    	dom: 'Bfrtip',
+		        buttons: [
+		            {
+					    extend: 'excelHtml5',
+					    title: "List Nilai Asli",
 					    text: 'Download Excel',
 					    exportOptions: {
 					        stripNewlines: true

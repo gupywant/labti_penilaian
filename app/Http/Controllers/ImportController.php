@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Imports\SiswaImport;
 use App\model\NilaiurutModel;
+use App\model\NilaiurutasliModel;
 use App\model\NilaiurutrefModel;
 use App\Imports\NilaiurutImport;
 use Maatwebsite\Excel\Facades\Excel;
@@ -21,6 +22,7 @@ class ImportController extends Controller
 		}
 		$data['urut'] = 1;
 		$data['nilai'] = NilaiurutModel::where('id_urut',$id)->orderBy('nama')->get();
+		$data['nilaiasli'] = NilaiurutasliModel::where('id_urut',$id)->orderBy('nama')->get();
 		return view('admin.nilaiurut',$data);
 
 	}

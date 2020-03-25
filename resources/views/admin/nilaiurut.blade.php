@@ -75,59 +75,131 @@ User Manage
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-12">
-        <div class="card">
-          <div class="card-header">
-            <!--<div class="float-sm-left">
-              <h5>Nilai LA Kelas {{--$p->kelas--}} - {{--$p->nama_praktikum--}}</h5>
-            </div>-->
-            <button value="Tambah Praktikum" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal">Import Excel</button>
-            <div class="float-sm-right">
+          <div class="card">
+            <div class="card-header">
+              <!--<div class="float-sm-left">
+                <h5>Nilai LA Kelas {{--$p->kelas--}} - {{--$p->nama_praktikum--}}</h5>
+              </div>-->
+              <button value="Tambah Praktikum" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal">Import Excel</button>
+              <div class="float-sm-right">
+                <h5>Nilai Asli</h5>
+              </div>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="card">
+                    <div class="card-header">
+                      <!--<div class="float-sm-left">
+                        <h5>Nilai LA Kelas {{--$p->kelas--}} - {{--$p->nama_praktikum--}}</h5>
+                      </div>-->
+                      <div class="float-sm-right">
+                        <h5>Nilai Convert</h5>
+                      </div>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                      <div class="table-responsive">
+                        <table class="table table-bordered" id="nilai" width="100%" cellspacing="0">
+                          <thead>
+                            <tr>
+                              <th>No</th>
+                              <th>NPM</th>
+                              <th>Nama</th>
+                              <th>Kelas</th>
+                              <th>TP</th>
+                              <th>LP</th>
+                            </tr>
+                          </thead>
+                          <tfoot>
+                            <tr>
+                              <th>No</th>
+                              <th>NPM</th>
+                              <th>Nama</th>
+                              <th>Kelas</th>
+                              <th>TP</th>
+                              <th>LP</th>
+                            </tr>
+                          </tfoot>
+                          <tbody>
+                            <?php $no = 1; ?>
+                            @foreach($nilai as $key => $data)
+                            <tr>
+                              <td>{{$no++}}</td>
+                              <td>{{$data->npm}}</td>
+                              <td>{{$data->nama}}</td>
+                              <td>{{$data->kelas}}</td>
+                              <td>{{$data->tp}}</td>
+                              <td>{{$data->lp}}</td>
+                            </tr>
+                            @endforeach
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                    <!-- /.card-body -->
+                  </div>
+                  <!-- /.card -->
+                </div>
+                <div class="col-md-6">
+                  <div class="card">
+                    <div class="card-header">
+                      <!--<div class="float-sm-left">
+                        <h5>Nilai LA Kelas {{--$p->kelas--}} - {{--$p->nama_praktikum--}}</h5>
+                      </div>-->
+                      <div class="float-sm-right">
+                        <h5>Nilai Asli</h5>
+                      </div>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                      <div class="table-responsive">
+                        <table class="table table-bordered" id="nilaiasli" width="100%" cellspacing="0">
+                          <thead>
+                            <tr>
+                              <th>No</th>
+                              <th>NPM</th>
+                              <th>Nama</th>
+                              <th>Kelas</th>
+                              <th>TP</th>
+                              <th>LP</th>
+                            </tr>
+                          </thead>
+                          <tfoot>
+                            <tr>
+                              <th>No</th>
+                              <th>NPM</th>
+                              <th>Nama</th>
+                              <th>Kelas</th>
+                              <th>TP</th>
+                              <th>LP</th>
+                            </tr>
+                          </tfoot>
+                          <tbody>
+                            <?php $no = 1; ?>
+                            @foreach($nilaiasli as $key => $data)
+                            <tr>
+                              <td>{{$no++}}</td>
+                              <td>{{$data->npm}}</td>
+                              <td>{{$data->nama}}</td>
+                              <td>{{$data->kelas}}</td>
+                              <td>{{$data->tp}}</td>
+                              <td>{{$data->lp}}</td>
+                            </tr>
+                            @endforeach
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                    <!-- /.card-body -->
+                  </div>
+                  <!-- /.card -->
+                </div>
+              </div>
             </div>
           </div>
-          <!-- /.card-header -->
-          <div class="card-body">
-            <div class="table-responsive">
-              <table class="table table-bordered" id="nilai" width="100%" cellspacing="0">
-                <thead>
-                  <tr>
-                    <th>No</th>
-                    <th>NPM</th>
-                    <th>Nama</th>
-                    <th>Kelas</th>
-                    <th>TP</th>
-                    <th>LP</th>
-                  </tr>
-                </thead>
-                <tfoot>
-                  <tr>
-                    <th>No</th>
-                    <th>NPM</th>
-                    <th>Nama</th>
-                    <th>Kelas</th>
-                    <th>TP</th>
-                    <th>LP</th>
-                  </tr>
-                </tfoot>
-                <tbody>
-                  <?php $no = 1; ?>
-                  @foreach($nilai as $key => $data)
-                  <tr>
-                    <td>{{$no++}}</td>
-                    <td>{{$data->npm}}</td>
-                    <td>{{$data->nama}}</td>
-                    <td>{{$data->kelas}}</td>
-                    <td>{{$data->tp}}</td>
-                    <td>{{$data->lp}}</td>
-                  </tr>
-                  @endforeach
-                </tbody>
-              </table>
-            </div>
-          </div>
-          <!-- /.card-body -->
         </div>
-        <!-- /.card -->
-      </div>
       <!-- /.col -->
     </div>
   </div>

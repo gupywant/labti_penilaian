@@ -3,6 +3,7 @@
 namespace App\Imports;
 
 use App\model\NilaiurutModel;
+use App\model\NilaiurutasliModel;
 use Maatwebsite\Excel\Concerns\ToModel;
 
 class NilaiurutImport implements ToModel
@@ -47,6 +48,31 @@ class NilaiurutImport implements ToModel
                 $this->tipe => $nilai
             );
             NilaiurutModel::where('npm',substr($row[4],0,7))->update($data);
+        }
+
+        $nilai = $row[9];
+        if($this->update==0){
+            if($row[0]!=="Surname"){
+                $asli = new NilaiurutasliModel;
+                $asli->id_urut = $this->id_urut;
+                $asli->nama = $row[0];
+                $asli->kelas = $row[1];
+                $asli->npm = substr($row[4],0,7);
+                if($this->tipe=="tp"){
+                    $asli->tp = $nilai;
+                }else{
+                    $asli->lp = $nilai;
+                }
+
+                if($row[0]!=="Overall average"){
+                    $asli->save();
+                }
+            }
+        }else{
+            $data = array(
+                $this->tipe => $nilai
+            );
+            NilaiurutasliModel::where('npm',substr($row[4],0,7))->update($data);
         }
 
         return new NilaiurutModel([
