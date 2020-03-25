@@ -38,6 +38,7 @@ User Manage
         <button type="button" class="close" data-dismiss="modal">&times;</button>
       </div>
       <div class="modal-body">
+        <p>*Upload file excel dari web labti kesini</p>
         <form action="{{route('admin.import')}}" method="post" enctype="multipart/form-data">
           {{ csrf_field() }}
            <div class="form-group">
