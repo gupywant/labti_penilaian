@@ -22,7 +22,6 @@ class ImportController extends Controller
 		}
 		$data['urut'] = 1;
 		$data['nilai'] = NilaiurutModel::where('id_urut',$id)->orderBy('nama')->get();
-		$data['nilaiasli'] = NilaiurutasliModel::where('id_urut',$id)->orderBy('nama')->get();
 		return view('admin.nilaiurut',$data);
 
 	}

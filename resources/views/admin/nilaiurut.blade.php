@@ -178,14 +178,14 @@ User Manage
                           </tfoot>
                           <tbody>
                             <?php $no = 1; ?>
-                            @foreach($nilaiasli as $key => $data)
+                            @foreach($nilai as $key => $data)
                             <tr>
                               <td>{{$no++}}</td>
                               <td>{{$data->npm}}</td>
                               <td>{{$data->nama}}</td>
                               <td>{{$data->kelas}}</td>
-                              <td>{{$data->tp}}</td>
-                              <td>{{$data->lp}}</td>
+                              <td>{{$data->tp/3.0}}</td>
+                              <td>{{$data->lp/2.0}}</td>
                             </tr>
                             @endforeach
                           </tbody>
