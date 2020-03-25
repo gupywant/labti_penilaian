@@ -38,21 +38,16 @@ User Manage
         <button type="button" class="close" data-dismiss="modal">&times;</button>
       </div>
       <div class="modal-body">
-        <form action="{{route('admin.uruttp')}}" method="post" enctype="multipart/form-data">
+        <form action="{{route('admin.import')}}" method="post" enctype="multipart/form-data">
           {{ csrf_field() }}
-          <label>Upload Pre test - TP</label>
-          <div class="file-field">
-            <div class="btn btn-primary btn-sm float-left">
-              <span>Choose file</span>
-              <input type="file" name="file">
-              <input type="hidden" name="session" value="{!!session('id_urut')!!}">
-            </div>
+           <div class="form-group">
+            <label for="sel1">Tipe File:</label>
+            <select class="form-control" name="tipe" id="sel1">
+              <option value="tp">Pre test - TP</option>
+              <option value="lp">Post test - LP</option>
+            </select>
           </div>
-          <input type="submit" class="btn btn-warning" value="upload" name="">
-        </form>
-        <form action="{{route('admin.urutlp')}}" method="post" enctype="multipart/form-data">
-          {{ csrf_field() }}
-          <label>Upload Post test - LP</label>
+          <label>Upload File</label>
           <div class="file-field">
             <div class="btn btn-primary btn-sm float-left">
               <span>Choose file</span>

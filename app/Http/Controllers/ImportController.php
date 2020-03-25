@@ -25,7 +25,7 @@ class ImportController extends Controller
 
 	}
 
-    public function tp(Request $request){
+    public function import(Request $request){
     	if(empty($request->file)){
             return back()->with('alert','pilih file terlebih dahulu');
         }
@@ -57,48 +57,7 @@ class ImportController extends Controller
 	 
 		// import data
 		//
-		$tipe = "tp";
-		Excel::import(new NilaiurutImport($id_urut,$tipe,$update), '/'.$path.'/'.$nama_file);
-		// alihkan halaman kembali
-		NilaiurutModel::where('nama','Surname')->delete();
-		NilaiurutModel::where('npm',NULL)->delete();
-
-		return back()->with('id_urut',$id_urut);
-    }
-
-    public function lp(Request $request){
-    	if(empty($request->file)){
-            return back()->with('alert','pilih file terlebih dahulu');
-        }
-
-        if(empty($request->session)){
-	        $ref = new NilaiurutrefModel;
-	    	$ref->save();
-	    	$id_urut = $ref->id_urut;
-	    	$update = 0;
-	    }else{
-	    	$id_urut = $request->session;
-	    	$update = 1;
-	    }
-
-        $path = public_path().'/filesdat/'.$id_urut;
-        if (!file_exists($path)) {
-            File::makeDirectory($path, $mode = 0777, true, true);
-        }
-        $file = $request->file('file');
-        $file->move($path,$file->getClientOriginalName());
-
-		// menangkap file excel
-		$file = $request->file('file');
-
-		// membuat nama file unik
-		$nama_file = $file->getClientOriginalName();
-	 
-		// upload ke folder file_siswa di dalam folder public
-	 
-		// import data
-		//
-		$tipe = "lp";
+		$tipe = $request->tipe;
 		Excel::import(new NilaiurutImport($id_urut,$tipe,$update), '/'.$path.'/'.$nama_file);
 		// alihkan halaman kembali
 		NilaiurutModel::where('nama','Surname')->delete();
